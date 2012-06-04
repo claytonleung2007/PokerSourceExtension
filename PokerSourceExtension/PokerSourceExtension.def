@@ -1,0 +1,6 @@
+LIBRARY "PokerSourceExtension"
+
+EXPORTS
+	Export_Echo
+	Export_CompareTexasHand
+	
