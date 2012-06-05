@@ -51,7 +51,7 @@ namespace pokerstory{
 		pocket1 and pocket2 are 2 cards represented as strings e.g "AcKc"
 		board is made up of 5 cards represented as strings e.g "AcKcQcJcTc"
 	*/
-	void CompareTexasHand(const char* hand1, const char* hand2, const char* board, int* result)
+	int CompareTexasHand(const char* hand1, const char* hand2, const char* board)
 	{
 		// Say we start with something like this...
 		StdDeck_CardMask player1 = TextToPokerEval(hand1);
@@ -75,7 +75,7 @@ namespace pokerstory{
 		else
 		   winner = 0;
 
-		result = &winner;
+		return winner;
 	}
 
 }

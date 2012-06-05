@@ -2,38 +2,91 @@
 #include <iostream>
 
 __declspec(dllimport) const char* Export_Echo(const char*);
-__declspec(dllimport) void Export_CompareTexasHand(const char*, const char*, const char*, int*);
+__declspec(dllimport) int __stdcall Export_CompareTexasHand(const char*, const char*, const char*);
+
+// prototypes
+void testPlayerOneWins();
+void testPlayerTwoWins();
+void testDraw();
+void testEcho();
 
 int main()
 {
-	const char* result = Export_Echo("Hello World");
+	printf("Begin Tests");
 
-	const char* test1 = "hello";
+	testEcho();
 
-	std::string testme = test1;
-
-	printf(testme.c_str());
-
-
-	const char* hand1 = "As";
-	const char* hand2 = "";
-	const char* board = "Ad";
-
-	
-	int a = -1;
-    int* p;
-
-	p = &a;
-
-	Export_CompareTexasHand(hand1, hand2, board, &a);
-
-	std::cout << "winner = " << a;
-
-	//std::cout << "start: " << result << " :finished";
-
-
-
+	testPlayerOneWins();
+	testPlayerTwoWins();
+	testDraw();
+   
 	std::cin.get();
 
 	return 0;
+}
+
+void testPlayerOneWins()
+{
+	printf("\nTest player 1 wins ... ");
+
+	const char* hand1 = "As";
+	const char* hand2 = "TdTh";
+	const char* board = "AdTcAc";
+		
+	int winner;
+	winner = Export_CompareTexasHand(hand1, hand2, board);
+
+	if (winner == 1)
+		printf("passed");
+	else
+		printf("failed");
+
+	
+}
+
+void testPlayerTwoWins()
+{
+	printf("\nTest player 2 wins ... ");
+
+	const char* hand1 = "As9s";
+	const char* hand2 = "TdTh";
+	const char* board = "AdTc5c4h9h";
+		
+	int winner;
+	winner = Export_CompareTexasHand(hand1, hand2, board);
+
+	if (winner == 2)
+		printf("passed");
+	else
+		printf("failed");
+}
+
+void testDraw()
+{
+	printf("\nTest Draw ... ");
+
+	const char* hand1 = "As9s";
+	const char* hand2 = "Ah9d";
+	const char* board = "AdTc5c4h9h";
+		
+	int winner;
+	winner = Export_CompareTexasHand(hand1, hand2, board);
+
+	if (winner == 0)
+		printf("passed");
+	else
+		printf("failed");
+}
+
+void testEcho()
+{
+	printf("\nTest Echo ... ");
+	
+	const char* echo;
+	echo = Export_Echo("echo this");
+
+	if (echo == "echo this")
+		printf("passed");
+	else
+		printf("failed");
 }
