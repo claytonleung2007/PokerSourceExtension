@@ -14,7 +14,7 @@
 	
 	<files id="common">
 		<compilerflag value="-Iinclude"/>
-		<!--<compilerflag value="-IC:\Users\Nathan\Documents\Visual Studio 2010\Projects\NMEExtensions\XPokerEval.Pokersource\include"/>-->
+		<compilerflag value="-IC:..\XPokerEval.Pokersource\include"/>
 		<compilerflag value='-D"WIN32"'/>
 		<compilerflag value='-D"_DEBUG"'/>
 				
@@ -43,7 +43,7 @@
 		<ext value=".ndll" unless="mobile"/>
 		<files id="common"/>
 		
-		<!--<lib if="windows" name="C:\Users\Nathan\Documents\Visual Studio 2010\Projects\NMEExtensions\bin\XPokerEval.PokerSource.lib" />	-->
+		<lib if="windows" name="..\bin\XPokerEval.PokerSource.lib" />	-->
 	</target>
 
 	<target id="default">

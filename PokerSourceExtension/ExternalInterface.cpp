@@ -15,12 +15,15 @@ static value pse_echo(value message)
 {	
 	const char* text = val_string(message);
 	
-	//const char* myecho = pokerstory::Echo("echo echo");
-	//return alloc_string(PokerUtils::Echo(text));	
-
 	return alloc_string(pokerstory::Echo(text));
 }
 DEFINE_PRIM (pse_echo, 1);
+
+static value pse_CompareTexasHand(value hand1, value hand2, value board)
+{
+	return alloc_int(pokerstory::CompareTexasHand(val_string(hand1), val_string(hand2), val_string(board)));
+}
+DEFINE_PRIM (pse_CompareTexasHand, 3);
 
 extern "C" void test_main () {
 	
